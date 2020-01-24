@@ -4,7 +4,6 @@
 // The refactored version of this code should be promise based and consider standard linting practices
 
 // DO NOT REFACTOR THIS SECTION //
-"Hello \n World"
 const lyrics = {
     intro: "Look\
     If you had\
@@ -79,7 +78,7 @@ const lyrics = {
     This opportunity comes once in a lifetime you better",
     refrainRepeat: 2, // number of times that refrain get repeated between choruses
     ending: "You can do anything you set your mind to, man"
-}
+};
 // DO NOT REFACTOR THIS SECTION //
 
 // REFACTOR THIS CODE //
@@ -110,92 +109,102 @@ function momsSpagetti(lyrics) {
 
     return loseYourself;
 }
-// console.log(momsSpagetti(lyrics))
+// console.log(momsSpagetti(lyrics));
 
 // REFACTORED VERSION HERE //
+// SO I DECIDED TO USE A PROMISE AND .THEN TO REFACTOR THE CODE. 
+// INSIDE THE .THEN I SET UP A FOR LOOP TO CATCH THE SPACING MADE BY
+// ESCAPES IN THE OBJECT SO THE PRINTED LYRICS AND SPACING WOULD LOOK 
+// THE SAME AS THEY DO ON THE GOOGLE LINK
+// THE FIRST PROMISE IS MY SOLUTION TO THE PROBLEM. 
+// MY SECOND AND THIRD ARE ATTEMPTS AT HUMOUR. 
+// I REALLY ENJOYED BEING ASKED FOR A JOKE IN THE INTERVIEW SO MAYBE I CAN GET A LAUGH HERE.
+// I USED ESLINT TO CHECK MY CODE, I HOPE IT IS UP TO YOUR STANDARDS 
+// AND I AM USING AN INDENTATION OF 4 SPACES
+// THANKS FOR THE PROBLEM IT WAS A FUN ONE
+// I PUT COMMENTS IN MY FIRST PROMISE TO EXPLAIN
 
-let marshallPromised = new Promise((resolve) => {
-    let singIt = lyrics.intro +"\n\n" 
-    for(item in lyrics.choruses){
-        singIt += lyrics.choruses[item].chorus  +"\n\n"
-        singIt += lyrics.refrain +"\n\n" + lyrics.refrain +"\n\n" 
+const marshallPromised = new Promise((resolve) => {
+    let singIt = lyrics.intro + "\n\n";
+    for(const item in lyrics.choruses) {
+        singIt += lyrics.choruses[item].chorus  + "\n\n";
+        singIt += lyrics.refrain + "\n\n" + lyrics.refrain + "\n\n";
     }
-    singIt += lyrics.ending;
+    singIt += lyrics.ending +"\n";
     resolve(singIt);
-}) 
-marshallPromised.then((singIt) => {  
-    numberofSpaces= 0
-    let string="";
-    for(item of singIt){
-        if(item === " "){
+});
+marshallPromised.then((singIt) => {
+    let numberofSpaces = 0;
+    let string = "";
+    for(const item of singIt) {
+        if(item === " ") {
             numberofSpaces++;
         } else {
             numberofSpaces = 0;
         }
-        if (numberofSpaces === 4){
-            string += item +"\n"
+        if (numberofSpaces === 4) {
+            string += item + "\n";
         } else {
-            string += item
+            string += item;
         }
-    } console.log(string)
-})
-
+    } 
+    console.log(string);
+});
 
 const momsSpagettiMaxVolume = new Promise((resolve) => {
-    let singIt = lyrics.intro +"\n\n" 
-    for(item in lyrics.choruses){
-        singIt += lyrics.choruses[item].chorus  +"\n\n"
-        singIt += lyrics.refrain +"\n\n" + lyrics.refrain +"\n\n" 
+    let singIt = lyrics.intro + "\n\n";
+    for(const item in lyrics.choruses) {
+        singIt += lyrics.choruses[item].chorus  + "\n\n";
+        singIt += lyrics.refrain + "\n\n" + lyrics.refrain + "\n\n";
     }
-    singIt += lyrics.ending;
+    singIt += lyrics.ending + "\n";
     resolve(singIt);
-}) 
-momsSpagettiMaxVolume.then((singIt) => {  
-    numberofSpaces= 0
-    let string="";
-    for(item of singIt){
-        if(item === " "){
+});
+
+momsSpagettiMaxVolume.then((singIt) => {
+    let numberofSpaces = 0;
+    let string = "";
+    for(const item of singIt) {
+        if(item === " ") {
             numberofSpaces++;
         } else {
             numberofSpaces = 0;
         }
-        if (numberofSpaces === 4){
-            string += item.toUpperCase() +"\n"
+        if (numberofSpaces === 4) {
+            string += item.toUpperCase() + "\n";
         } else {
             string += item.toUpperCase();
         }
-    } 
-    
-    // console.log(string)
-})
+    }
+    console.log(string);
+});
 
 const whatDoesEminemSoundLikeBackwards = new Promise((resolve) => {
-    let singIt = lyrics.intro +"\n\n" 
-    for(item in lyrics.choruses){
-        singIt += lyrics.choruses[item].chorus  +"\n\n"
-        singIt += lyrics.refrain +"\n\n" + lyrics.refrain +"\n\n" 
+    let singIt = lyrics.intro + "\n\n";
+    for(const item in lyrics.choruses) {
+        singIt += lyrics.choruses[item].chorus  + "\n\n";
+        singIt += lyrics.refrain + "\n\n" + lyrics.refrain + "\n\n"; 
     }
-    singIt += lyrics.ending;
+    singIt += lyrics.ending + "\n";
     resolve(singIt);
-}) 
-whatDoesEminemSoundLikeBackwards.then((singIt) => {  
-    numberofSpaces= 0;
-    let string="";
-    for(item of singIt){
-        if(item === " "){
+}); 
+whatDoesEminemSoundLikeBackwards.then((singIt) => {
+    let numberofSpaces = 0;
+    let string = "";
+    for(const item of singIt) {
+        if(item === " ") {
             numberofSpaces++;
         } else {
             numberofSpaces = 0;
         }
-        if (numberofSpaces === 4){
-            string += item +"\n";
+        if (numberofSpaces === 4) {
+            string += item + "\n";
         } else {
             string += item;
         }
     }
-    eminem = string.split('');
-    eminemBackwards = eminem.reverse();
-    playEminemBackwards= eminemBackwards.join("");
-    // console.log(playEminemBackwards)
-})
-
+    const eminem = string.split('');
+    const eminemBackwards = eminem.reverse();
+    const playEminemBackwards= eminemBackwards.join("");
+    console.log(playEminemBackwards);
+});
