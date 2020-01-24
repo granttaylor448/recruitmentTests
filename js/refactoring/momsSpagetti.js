@@ -122,7 +122,7 @@ function momsSpagetti(lyrics) {
 // I USED ESLINT TO CHECK MY CODE, I HOPE IT IS UP TO YOUR STANDARDS 
 // AND I AM USING AN INDENTATION OF 4 SPACES
 // THANKS FOR THE PROBLEM IT WAS A FUN ONE
-// I PUT COMMENTS IN MY FIRST PROMISE TO EXPLAIN
+
 
 const marshallPromised = new Promise((resolve) => {
     let singIt = lyrics.intro + "\n\n";
@@ -130,7 +130,7 @@ const marshallPromised = new Promise((resolve) => {
         singIt += lyrics.choruses[item].chorus  + "\n\n";
         singIt += lyrics.refrain + "\n\n" + lyrics.refrain + "\n\n";
     }
-    singIt += lyrics.ending +"\n";
+    singIt += lyrics.ending + "\n";
     resolve(singIt);
 });
 marshallPromised.then((singIt) => {
