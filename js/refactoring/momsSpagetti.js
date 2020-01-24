@@ -4,6 +4,7 @@
 // The refactored version of this code should be promise based and consider standard linting practices
 
 // DO NOT REFACTOR THIS SECTION //
+"Hello \n World"
 const lyrics = {
     intro: "Look\
     If you had\
@@ -81,14 +82,13 @@ const lyrics = {
 }
 // DO NOT REFACTOR THIS SECTION //
 
-
 // REFACTOR THIS CODE //
 // This code assembles the above object into a string with the lyrics for Eminem's "lose Yourself". 
 // The result should look like https://www.google.ca/search?rlz=1C5CHFA_enCA764CA764&ei=4iFbWs_VG43CjwOJ465Q&q=lose+yourself+lyrics&oq=lose+yoursle&gs_l=psy-ab.3.0.0i10k1l10.6780.11717.0.12640.28.24.0.2.2.0.275.2686.4j13j2.20.0....0...1c.1.64.psy-ab..15.12.1403.0..0j0i67k1j0i131k1j0i131i67k1.234.XSGvMUvV4XY
 function momsSpagetti(lyrics) {
 
-    var loseYourself;
-    var internalCounter = 0
+    let loseYourself;
+    let internalCounter = 0
     loseYourself = lyrics.intro;
 
     for(i = 0; i < lyrics.choruses.length; i++) {
@@ -110,5 +110,92 @@ function momsSpagetti(lyrics) {
 
     return loseYourself;
 }
+// console.log(momsSpagetti(lyrics))
 
 // REFACTORED VERSION HERE //
+
+let marshallPromised = new Promise((resolve) => {
+    let singIt = lyrics.intro +"\n\n" 
+    for(item in lyrics.choruses){
+        singIt += lyrics.choruses[item].chorus  +"\n\n"
+        singIt += lyrics.refrain +"\n\n" + lyrics.refrain +"\n\n" 
+    }
+    singIt += lyrics.ending;
+    resolve(singIt);
+}) 
+marshallPromised.then((singIt) => {  
+    numberofSpaces= 0
+    let string="";
+    for(item of singIt){
+        if(item === " "){
+            numberofSpaces++;
+        } else {
+            numberofSpaces = 0;
+        }
+        if (numberofSpaces === 4){
+            string += item +"\n"
+        } else {
+            string += item
+        }
+    } console.log(string)
+})
+
+
+const momsSpagettiMaxVolume = new Promise((resolve) => {
+    let singIt = lyrics.intro +"\n\n" 
+    for(item in lyrics.choruses){
+        singIt += lyrics.choruses[item].chorus  +"\n\n"
+        singIt += lyrics.refrain +"\n\n" + lyrics.refrain +"\n\n" 
+    }
+    singIt += lyrics.ending;
+    resolve(singIt);
+}) 
+momsSpagettiMaxVolume.then((singIt) => {  
+    numberofSpaces= 0
+    let string="";
+    for(item of singIt){
+        if(item === " "){
+            numberofSpaces++;
+        } else {
+            numberofSpaces = 0;
+        }
+        if (numberofSpaces === 4){
+            string += item.toUpperCase() +"\n"
+        } else {
+            string += item.toUpperCase();
+        }
+    } 
+    
+    // console.log(string)
+})
+
+const whatDoesEminemSoundLikeBackwards = new Promise((resolve) => {
+    let singIt = lyrics.intro +"\n\n" 
+    for(item in lyrics.choruses){
+        singIt += lyrics.choruses[item].chorus  +"\n\n"
+        singIt += lyrics.refrain +"\n\n" + lyrics.refrain +"\n\n" 
+    }
+    singIt += lyrics.ending;
+    resolve(singIt);
+}) 
+whatDoesEminemSoundLikeBackwards.then((singIt) => {  
+    numberofSpaces= 0;
+    let string="";
+    for(item of singIt){
+        if(item === " "){
+            numberofSpaces++;
+        } else {
+            numberofSpaces = 0;
+        }
+        if (numberofSpaces === 4){
+            string += item +"\n";
+        } else {
+            string += item;
+        }
+    }
+    eminem = string.split('');
+    eminemBackwards = eminem.reverse();
+    playEminemBackwards= eminemBackwards.join("");
+    // console.log(playEminemBackwards)
+})
+
